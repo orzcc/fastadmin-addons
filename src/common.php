@@ -13,6 +13,15 @@ use think\Loader;
 use think\Response;
 use think\Route;
 
+// 确保基础常量可用
+if (!defined('ROOT_PATH')) {
+    if (is_file(dirname(dirname(dirname(dirname(__DIR__)))) . '/thinkphp/base.php')) {
+        require dirname(dirname(dirname(dirname(__DIR__)))) . '/thinkphp/base.php';
+    } else {
+        define('ROOT_PATH', dirname(dirname(dirname(dirname(__DIR__)))) . DIRECTORY_SEPARATOR);
+    }
+}
+
 // 插件目录
 define('ADDON_PATH', ROOT_PATH . 'addons' . DS);
 
